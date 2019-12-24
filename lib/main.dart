@@ -27,10 +27,8 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     
     final EmployeesState employeesState = Provider.of<EmployeesState>(context);
-    print('111');
     if(employeesState.listEmployees== null)employeesState.getEmployees();
 
-    
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter Provider Sample'),
@@ -50,13 +48,14 @@ class MyHomePage extends StatelessWidget {
   }
 
   Widget employeeCard(Employee employee){
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
+    return Container(
+      height: 80,
+      padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 1, bottom: 1),
       child: Card(
         elevation: 0.9,
         color: Color(0xFFECECEC),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(employee.employeeName, style: TextStyle(color: Colors.black, fontSize: 20.0),),
