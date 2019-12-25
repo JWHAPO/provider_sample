@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider_sample/state/employee.dart';
-import 'package:provider_sample/api.dart';
 import 'package:provider_sample/model/employee.dart';
+import 'package:provider_sample/employee_detail.dart';
 
 void main() => runApp(MyApp());
 
@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
           ListView.builder(
             itemCount: employeesState.listEmployees.length,
             itemBuilder: (BuildContext context, int index){
-              return employeeCard(employeesState.listEmployees[index]);
+              return employeeCard(employeesState.listEmployees[index], context);
             },
           ) : Center(
           child: CircularProgressIndicator(),
@@ -47,20 +47,25 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  Widget employeeCard(Employee employee){
-    return Container(
-      height: 80,
-      padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 1, bottom: 1),
-      child: Card(
-        elevation: 0.9,
-        color: Color(0xFFECECEC),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(employee.employeeName, style: TextStyle(color: Colors.black, fontSize: 20.0),),
-            Text(employee.employeeSalary, style: TextStyle(color: Colors.grey, fontSize: 14.0),),
-          ],
+  Widget employeeCard(Employee employee, BuildContext context){
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => EmployeeDetail(employee.id)));
+      },
+      child: Container(
+        height: 80,
+        padding: EdgeInsets.only(left: 10.0, right: 10.0, top: 1, bottom: 1),
+        child: Card(
+          elevation: 0.9,
+          color: Color(0xFFECECEC),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(employee.employeeName, style: TextStyle(color: Colors.black, fontSize: 20.0),),
+              Text(employee.employeeSalary, style: TextStyle(color: Colors.grey, fontSize: 14.0),),
+            ],
+          ),
         ),
       ),
     );
