@@ -1,6 +1,6 @@
 # provider_sample
 
-Flutter Provider http sample.
+Flutter Provider http sample. ( plus simple rive animation)
 
 ## Getting Started
 

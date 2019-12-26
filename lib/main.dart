@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:provider_sample/state/employee.dart';
 import 'package:provider_sample/model/employee.dart';
 import 'package:provider_sample/employee_detail.dart';
+import 'package:flare_flutter/flare_actor.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,7 +42,14 @@ class MyHomePage extends StatelessWidget {
               return employeeCard(employeesState.listEmployees[index], context);
             },
           ) : Center(
-          child: CircularProgressIndicator(),
+          child: Container(
+            alignment: Alignment.center,
+            child: FlareActor(
+              'assets/animations/roket.flr',
+              animation: 'Untitled',
+              fit: BoxFit.contain,
+            ),
+          )
         )
       )
     );
