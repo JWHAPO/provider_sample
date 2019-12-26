@@ -28,7 +28,6 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     
     final EmployeesState employeesState = Provider.of<EmployeesState>(context);
-    if(employeesState.listEmployees== null)employeesState.getEmployees();
 
     return Scaffold(
       appBar: AppBar(
@@ -48,6 +47,11 @@ class MyHomePage extends StatelessWidget {
               'assets/animations/roket.flr',
               animation: 'Untitled',
               fit: BoxFit.contain,
+              callback: (name){
+                if(name=='Untitled'){
+                  if(employeesState.listEmployees== null)employeesState.getEmployees();
+                }
+              },
             ),
           )
         )
