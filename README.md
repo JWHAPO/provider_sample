@@ -1,6 +1,6 @@
 # provider_sample
 
-Provider Sample Project
+Flutter Provider http sample.
 
 ## Getting Started
 
